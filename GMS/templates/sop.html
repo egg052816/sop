@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>XTS SOP / 測試作業流程</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1120;  /* 比原本更亮一階的深藍 */
+      color: #e5e7eb;
+      margin: 0;
+    }
+
+    a { color: #38bdf8; }
+
+    .container {
+      width: 94%;
+      max-width: 1500px;
+      margin: 20px auto 40px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 0 0 6px;
+    }
+
+    .header-sub {
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .header-tag {
+      float: right;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #22c1c3;
+      font-size: 13px;
+      margin-top: -24px;
+    }
+
+    /* ===== SOP Flow Bar ===== */
+    .sop-flow {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .sop-flow-step {
+      position: relative;
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .sop-flow-step::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -6px;
+      width: 12px;
+      height: 2px;
+      background: #22c1c3;
+    }
+
+    .sop-flow-step:last-child::after {
+      content: none;
+    }
+
+    .sop-step-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #22c1c3;
+      color: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .sop-step-main {
+      font-weight: 600;
+    }
+
+    .sop-step-sub {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .sop-flow-step.main {
+      border-color: #22c1c3;
+      box-shadow: 0 0 0 1px rgba(34,193,195,0.4);
+    }
+
+    /* ===== SOP Sections ===== */
+    .sop-section {
+      background: #111827;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      padding: 18px 20px 16px;
+      margin-top: 18px;
+    }
+
+    .sop-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .sop-title {
+      font-size: 19px;
+      font-weight: 600;
+      color: #93c5fd;
+    }
+
+    .sop-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(34,193,195,0.18);
+      color: #22c1c3;
+    }
+
+    .sop-section p {
+      margin: 4px 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .sop-section ul,
+    .sop-section ol {
+      margin: 6px 0 8px 1.4rem;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    /* ===== Tables ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #1f2937;
+      vertical-align: top;
+    }
+
+    th {
+      background: #1f2937;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(15,23,42,0.65);
+    }
+
+    /* ATS matrix headings smaller */
+    .table-small th, .table-small td {
+      font-size: 12px;
+      padding: 6px 8px;
+      text-align: center;
+    }
+    .table-small th:first-child,
+    .table-small td:first-child {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .check {
+      font-weight: 700;
+      color: #4ade80;
+    }
+
+    /* Code blocks & inline */
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+      background: #020617;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    .code-block {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+      background: #020617;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      padding: 8px 10px;
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
+    /* Retry accordion */
+    details {
+      background: #020617;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      list-style: none;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary::before {
+      content: "▶ ";
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    details[open] summary::before {
+      content: "▼ ";
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <h1>XTS SOP / 測試作業流程</h1>
+  <div class="header-sub">
+    整理 Pretest → Flash SW → ATS / Terminal → Run XTS → Retry → Report Check 的標準步驟。
+  </div>
+  <div class="header-tag">XTS Standard Operating Procedure</div>
+
+  <!-- Flow Bar -->
+  <div class="sop-flow">
+    <div class="sop-flow-step main">
+      <div class="sop-step-number">1</div>
+      <div>
+        <div class="sop-step-main">Pretest</div>
+        <div class="sop-step-sub">User Build / Device Info / BuildVerifier</div>
+      </div>
+    </div>
+    <div class="sop-flow-step">
+      <div class="sop-step-number">2</div>
+      <div>
+        <div class="sop-step-main">Flash SW</div>
+        <div class="sop-step-sub">User / Userdebug / GSI / Vendor-Boot</div>
+      </div>
+    </div>
+    <div class="sop-flow-step">
+      <div class="sop-step-number">3</div>
+      <div>
+        <div class="sop-step-main">ATS / Terminal</div>
+        <div class="sop-step-sub">依 Stage 選 CTS / GTS / STS 等</div>
+      </div>
+    </div>
+    <div class="sop-flow-step">
+      <div class="sop-step-number">4</div>
+      <div>
+        <div class="sop-step-main">Run XTS</div>
+        <div class="sop-step-sub">確認 Fingerprint / MCTS / DUT 狀態</div>
+      </div>
+    </div>
+    <div class="sop-flow-step">
+      <div class="sop-step-number">5</div>
+      <div>
+        <div class="sop-step-main">Retry</div>
+        <div class="sop-step-sub">ToT / Mainline / Waiver 查詢</div>
+      </div>
+    </div>
+    <div class="sop-flow-step">
+      <div class="sop-step-number">6</div>
+      <div>
+        <div class="sop-step-main">Report Check</div>
+        <div class="sop-step-sub">ReportCheck / Jira 附件整理</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. Pretest -->
+  <div class="sop-section" id="pretest">
+    <div class="sop-section-header">
+      <div class="sop-title">1. Pretest（User Build 一台）</div>
+      <div class="sop-tag">Pretest</div>
+    </div>
+
+    <p>Pretest 階段先拿一台 Device 燒 <strong>User Build</strong>，跑完 IR / LR / MR / SMR 所需項目，並在 Jira 上附上必要附件。</p>
+
+    <table>
+      <thead>
+      <tr>
+        <th style="width:15%;">Stage</th>
+        <th style="width:45%;">Jira 附件要求</th>
+        <th>備註</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>IR / LR</td>
+        <td>
+          必須附上：<br>
+          ・AddDeviceInfo<br>
+          ・BuildVerifier<br>
+          ・Checklist<br>
+          （共 3 張截圖 + 1 個 zip + 1 個 xlsx）
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>MR / SMR</td>
+        <td>
+          必須附上：<br>
+          ・AddDeviceInfo<br>
+          ・BuildVerifier<br>
+          （共 3 張截圖 + 1 個 zip）
+        </td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p class="note">
+      <strong>BuildVerifier Tool 設定：</strong><br>
+      Target Build EDI：放「本次測試」由 AddDeviceInfo 產生的 zip 檔。<br>
+      Base Build EDI：放「上次同 Android 版本的 MR」zip 檔；若沒有 MR，可改用 SMR。
+    </p>
+  </div>
+
+  <!-- 2. Flash SW -->
+  <div class="sop-section" id="flash">
+    <div class="sop-section-header">
+      <div class="sop-title">2. Flash SW（燒錄軟體）</div>
+      <div class="sop-tag">Flash</div>
+    </div>
+
+    <p><strong>版本差異說明：</strong></p>
+    <ul>
+      <li>Android 13 以上：需測 <strong>GTS-I（GTS Interactive）</strong>。</li>
+      <li>Android 15 以上：額外需要多測 <strong>GTS-ROOT</strong>。</li>
+      <li>Android 15 以下：<strong>不需要燒錄 GTS-ROOT</strong>。</li>
+    </ul>
+
+    <p><strong>Flash Image 注意事項：</strong></p>
+    <ul>
+      <li>在 <strong>Bootloader Mode</strong> 下，如果裝置管理員偵測不到 device，請先檢查 driver。</li>
+      <li>不同客戶需要的 driver / Tool 不盡相同，若客戶沒有另外提供，可以先到：<br>
+        <code>\\10.57.45.213\3pl\Ready_to_GoogleDrive\Flash_sop</code> 搜尋通用 Flash SOP 與相關工具。
+      </li>
+    </ul>
+
+    <p class="note">
+      CTS-on-GSI 相關說明：需到 <code>http://10.57.42.97/XTS/</code> → VTS → 依 Android 版本選擇內部資料夾 → 下載對應
+      <code>signed-gsi_arm64-img-xxxxx.zip</code> → 解壓縮取得 <code>__system.img</code>，並替換 fastboot bat 檔中的 system image。
+    </p>
+  </div>
+
+  <!-- 3. ATS / Terminal -->
+  <div class="sop-section" id="ats">
+    <div class="sop-section-header">
+      <div class="sop-title">3. ATS / Terminal 使用原則</div>
+      <div class="sop-tag">ATS &amp; Terminal</div>
+    </div>
+
+    <p><strong>不同 Stage 對應可執行的 XTS 組合：</strong></p>
+
+    <table class="table-small">
+      <thead>
+      <tr>
+        <th>Stage / Item</th>
+        <th>CTS</th>
+        <th>GSI</th>
+        <th>CTSV</th>
+        <th>GTS</th>
+        <th>GTSI</th>
+        <th>GTS Root</th>
+        <th>VTS</th>
+        <th>STS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>IR</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>LR</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>MR</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>VBA</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="check">✓</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SMR</td>
+        <td class="check">✓</td>
+        <td></td>
+        <td></td>
+        <td class="check">✓</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>VR</td>
+        <td class="check">✓</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="check">✓</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p><strong>ATS / Terminal 操作原則：</strong></p>
+    <ul>
+      <li>ATS 網址用 <code>mtt start</code> 及 <code>mtt stop</code> 做開啟跟關閉。</li>
+      <li>若要使用 <strong>terminal</strong>，必須先 <code>mtt stop</code> 關閉 ATS，再執行 <code>adb kill-server</code>，確保新開 terminal 及 adb 是一個正確的乾淨環境。</li>
+    </ul>
+
+    <p><strong>SMR、VBA、VR 說明：</strong></p>
+    <ul>
+      <li>SMR ⇒ <strong>包含 CTS、GTS、STS</strong>。常見 terminal 指令：
+        <div class="code-block">
+CTS : run -m CtsSecurityTestCases
+GTS : run gts-smr
+STS : run -dynamic-incremental
+        </div>
+      </li>
+      <li>VBA ⇒ <code>gts-variant</code>（VBA = &gt; gts-variant）。</li>
+      <li>VR 依照 RD 判定實際要跑哪些套件。</li>
+    </ul>
+  </div>
+
+  <!-- 4. Run XTS -->
+  <div class="sop-section" id="runxts">
+    <div class="sop-section-header">
+      <div class="sop-title">4. Run XTS</div>
+      <div class="sop-tag">Run</div>
+    </div>
+
+    <p><strong>測試版本建議：</strong></p>
+    <ul>
+      <li>XTS 測試版本建議與「客戶提供的字測報告版本」相同。</li>
+      <li>若客戶使用 ToT 或其他特殊版本，建議先詢問 RD，確認測試版本再執行。</li>
+    </ul>
+
+    <p><strong>Run 之前建議檢查：</strong></p>
+    <ul>
+      <li>使用 <strong>DUTShow Tool</strong>，檢查 fingerprint 及版本驗證資訊是否與預期一致。</li>
+      <li>Android 12~14，若使用 Terminal 跑、在要測試 CTS 前，請先將 MCTS 關閉：
+        <div class="code-block">
+ENABLE_XTS_DYNAMIC_DOWNLOADER=False
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. Retry -->
+  <div class="sop-section" id="retry">
+    <div class="sop-section-header">
+      <div class="sop-title">5. Retry</div>
+      <div class="sop-tag">Retry</div>
+    </div>
+
+    <p>Retry 策略分成「非 CTS 測項」與「CTS 測項」兩大類，外加「ToT + Waiver」特別情境。</p>
+
+    <!-- 非 CTS -->
+    <details open>
+      <summary>非 CTS 測項 Retry 原則</summary>
+      <p style="margin-top:6px;">
+        除 CTS 外，若 Retry 多次都通過不了，<strong>建議使用 ToT（Daily Build）做 Retry</strong> 看看測項能否通過，
+        或許是近期 Google 才有更新，正式 release 尚未包含修正。
+      </p>
+    </details>
+
+    <!-- CTS -->
+    <details>
+      <summary>CTS 測項 Retry 原則</summary>
+      <p style="margin-top:6px;">
+        CTS 測項較為複雜，若 Fail 項目已經收斂到一個階段（只剩少數固定 Fail），請優先依照以下順序處理：
+      </p>
+      <ol>
+        <li>更新 <strong>Mainline</strong> 至較新的版本。</li>
+        <li>打開 MCTS：<code>ENABLE_XTS_DYNAMIC_DOWNLOADER=True</code>。</li>
+        <li>上述都做過、怎麼 Retry 都無法 pass，<strong>才改用 ToT</strong>（Daily Build）測試。</li>
+      </ol>
+    </details>
+
+    <!-- ToT + Waiver -->
+    <details>
+      <summary>ToT / 測項被移除 &amp; Waiver 處置</summary>
+      <p style="margin-top:6px;">
+        若用 ToT 單跑測項，<strong>發現結果都變成 0</strong>，代表 Google 已經將測項移除了，因此不論怎麼測試都不會通過。
+        發生上述情況時，請：
+      </p>
+      <ul>
+        <li>使用公司帳號登入
+          <a href="{{ google_waiver_url if google_waiver_url is defined else 'https://foxconn.corp-partner.google.com' }}"
+             target="_blank">foxconn.corp-partner.google.com</a>
+          檢查該測項是否已 waiver。
+        </li>
+        <li>若測項已經 waiver，<strong>提交時記得附上對應的 waiver ID 給 RD</strong>，讓 RD / 客戶後續有依據可查。</li>
+      </ul>
+
+      <p class="note">
+        ※ 內部另有整理一份「已確認可用的 Retry 手法與常見 Waiver ID」列表，可視需要補充到本頁或存放在 Waiver 工具中，以利後續查詢。
+      </p>
+    </details>
+  </div>
+
+  <!-- 6. Report Check -->
+  <div class="sop-section" id="reportcheck">
+    <div class="sop-section-header">
+      <div class="sop-title">6. Report Check</div>
+      <div class="sop-tag">Report</div>
+    </div>
+
+    <p>
+      完成所有測試後，請使用 <strong>ReportCheck Tool</strong>，做一次
+      <strong>自動 + 手動</strong> 的報告檢查，確認以下事項：
+    </p>
+    <ul>
+      <li>自動產生的報告內容是否完整、無明顯錯誤。</li>
+      <li>測試結果是否與實際 Run 的套件／版本一致。</li>
+      <li>工具會在本機 <strong>tmp</strong> 位置自動生成截圖與附件，請一併收集，提供給 RD 做 Review。</li>
+    </ul>
+
+    <p class="note">
+      建議將：最終確認過的報告檔、截圖、附件路徑，整理在 Jira 或內部追蹤系統中，方便日後追蹤與 audit。
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
