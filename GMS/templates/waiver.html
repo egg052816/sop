@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>  XTS Waiver List  </title>
+  <style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 20px;
+    background: #f5f5f5;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+
+  .suite-block {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  }
+
+  table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  word-wrap: break-word;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 600px; /* 想多大改這裡 */
+}
+
+/* 其他欄位縮小一點 */
+th:nth-child(1), td:nth-child(1) { width: 120px; }
+th:nth-child(2), td:nth-child(2) { width: 120px; }
+th:nth-child(3), td:nth-child(3) { width: 200px; }
+th:nth-child(5), td:nth-child(5) { width: 150px; }
+
+  input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+  }
+
+  .add-btn {
+    margin-top: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #888;
+    background: #fafafa;
+    cursor: pointer;
+  }
+
+  .add-btn:hover {
+    background: #eaeaea;
+  }
+
+  .note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+</style>
+
+</head>
+<body>
+  <h1>XTS Waiver List</h1>
+
+  <!-- CTS -->
+  <div class="suite-block">
+    <h2>CTS Waivers</h2>
+    <table id="cts-table">
+      <thead>
+        <tr>
+          <th>Waiver ID / Bug ID</th>
+          <th>ABI</th>
+          <th>Module / Package</th>
+          <th>Test Case</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- b/437127898 -->
+        <tr>
+          <td><input type="text" value="b/437127898"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsWindowManagerDeviceTestCases"></td>
+          <td><input type="text" value="android.server.wm.PinnedStackTests testDismissPipWhenLaunchNewOne"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/443835370 -->
+        <tr>
+          <td><input type="text" value="b/443835370"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsScopedStorageDeviceOnlyTest"></td>
+          <td><input type="text" value="android.scopedstorage.cts.device.ScopedStorageDeviceTest#testSystemGalleryCanRenameImageAndVideoDirs[volume=external]"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/443835370"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsScopedStorageDeviceOnlyTest"></td>
+          <td><input type="text" value="android.scopedstorage.cts.device.ScopedStorageDeviceTest#testSystemGalleryCanRenameImageAndVideoDirs[volume=volume_public]"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/428801091 HealthConnect Controller UI -->
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataAccessFragmentTest dataAccess_deleteCategoryData_showsDeleteDataRanges"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataAccessFragmentTest dataAccess_navigateToDataAccess"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.HomeFragmentTest homeFragment_openDataManagement"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.PermissionTypesFragmentTest permissionTypes_showsDeleteCategoryData"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.PermissionTypesFragmentTest permissionTypes_filterByApp"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataEntriesFragmentTest dataEntries_showsInsertedEntry"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataEntriesFragmentTest dataEntries_deletesData_showsNoData"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataEntriesFragmentTest dataEntries_changeDate_updatesSelectedDate"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataEntriesFragmentTest dataEntries_navigateToYesterday"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/428801091"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthConnectControllerTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.ui.DataEntriesFragmentTest dataEntries_changeUnit_showsUpdatedUnit"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/419744307 -->
+        <tr>
+          <td><input type="text" value="b/419744307"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthFitnessDeviceTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.RateLimiterTest testTryAcquireApiCallQuota_writeLimitExceeded_flagDisabled"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/419744307"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsHealthFitnessDeviceTestCases"></td>
+          <td><input type="text" value="android.healthconnect.cts.RateLimiterTest testTryAcquireApiCallQuota_readLimitExceeded_flagDisabled"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/427899490 -->
+        <tr>
+          <td><input type="text" value="b/427899490"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsJvmtiRunTest906HostTestCases"></td>
+          <td><input type="text" value="android.jvmti.cts.JvmtiHostTest906 testJvmti"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/427899491 -->
+        <tr>
+          <td><input type="text" value="b/427899491"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsJvmtiRunTest913HostTestCases"></td>
+          <td><input type="text" value="android.jvmti.cts.JvmtiHostTest913 testJvmti"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/421800984 -->
+        <tr>
+          <td><input type="text" value="b/421800984"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.EthernetManagerTest testCallbacks_withRunningInterface"></td>
+          <td><input type="text"></td>
+        </tr>
+
+        <!-- b/407682957 CTS 13_r13 NetworkAgentTest -->
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testAgentStartsInConnecting"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testSetAcceptUnvalidatedPreventAutomaticReconnect"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testPreventAutomaticReconnect"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testValidationStatus"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testSocketKeepalive"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/407682957"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsNetTestCases"></td>
+          <td><input type="text" value="android.net.cts.NetworkAgentTest#testSetAcceptUnvalidated"></td>
+          <td><input type="text" value="CTS 13_r13"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-btn" onclick="addRow('cts-table')">新增 CTS Waiver</button>
+  </div>
+
+  <!-- GTS -->
+  <div class="suite-block">
+    <h2>GTS Waivers</h2>
+    <table id="gts-table">
+      <thead>
+        <tr>
+          <th>Waiver ID / Bug ID</th>
+          <th>ABI</th>
+          <th>Module / Package</th>
+          <th>Test Case</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- b/141733998 -->
+        <tr>
+          <td><input type="text" value="b/141733998"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="GtsOsTestCases"></td>
+          <td><input type="text" value="com.google.android.os.gts.SecurityPatchTest#testSecurityPatchDate"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text" value="b/141733998"></td>
+          <td><input type="text" value="armeabi-v7a"></td>
+          <td><input type="text" value="GtsOsTestCases"></td>
+          <td><input type="text" value="com.google.android.os.gts.SecurityPatchTest#testSecurityPatchDate"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-btn" onclick="addRow('gts-table')">新增 GTS Waiver</button>
+  </div>
+
+  <!-- STS -->
+  <div class="suite-block">
+    <h2>STS Waivers</h2>
+    <table id="sts-table">
+      <thead>
+        <tr>
+          <th>Waiver ID / Bug ID</th>
+          <th>ABI</th>
+          <th>Module / Package</th>
+          <th>Test Case</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" value=""></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="StsHostTestCases"></td>
+          <td><input type="text" value="android.security.sts.KernelLtsTest testRequiredKernelLts_WARN"></td>
+          <td><input type="text" value="只有 Warning，無 bug id"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-btn" onclick="addRow('sts-table')">新增 STS Waiver</button>
+  </div>
+
+  <!-- GSI -->
+  <div class="suite-block">
+    <h2>GSI Waivers</h2>
+    <table id="gsi-table">
+      <thead>
+        <tr>
+          <th>Waiver ID / Bug ID</th>
+          <th>ABI</th>
+          <th>Module / Package</th>
+          <th>Test Case</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" value="b/453870468"></td>
+          <td><input type="text" value="arm64-v8a"></td>
+          <td><input type="text" value="CtsBiometricsTestCases"></td>
+          <td><input type="text" value="android.server.biometrics.BiometricPromptContentViewTest  testMoreOptionsButton_clickButton"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-btn" onclick="addRow('gsi-table')">新增 GSI Waiver</button>
+  </div>
+
+  <!-- VTS (目前空白，預留給之後用) -->
+  <div class="suite-block">
+    <h2>VTS Waivers</h2>
+    <table id="vts-table">
+      <thead>
+        <tr>
+          <th>Waiver ID / Bug ID</th>
+          <th>ABI</th>
+          <th>Module / Package</th>
+          <th>Test Case</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 目前沒有 VTS，之後可用「新增」補上 -->
+      </tbody>
+    </table>
+    <button class="add-btn" onclick="addRow('vts-table')">新增 VTS Waiver</button>
+  </div>
+
+  <script>
+    function addRow(tableId) {
+      const table = document.getElementById(tableId).getElementsByTagName("tbody")[0];
+      const colCount = table.parentElement.querySelectorAll("thead tr th").length;
+      const row = document.createElement("tr");
+      for (let i = 0; i < colCount; i++) {
+        const td = document.createElement("td");
+        const input = document.createElement("input");
+        input.type = "text";
+        td.appendChild(input);
+        row.appendChild(td);
+      }
+      table.appendChild(row);
+    }
+  </script>
+</body>
+</html>
